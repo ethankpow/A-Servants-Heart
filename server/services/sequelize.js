@@ -21,15 +21,40 @@ sequelize
     //   updatedAt: "updatedat"
     });
    User.sync();
-   const GetAllUsers = () => {
-    User.findAll().then(users => {
-    let allUsers = users.filter(users => users.dataValues)
-    console.log(allUsers)
-    return allUsers
-  })
-}
+ 
+const Organizations = sequelize.define('organizations', {
+    name: Sequelize.STRING,
+    password: Sequelize.STRING,
+    email: Sequelize.STRING,
+    phone_number: Sequelize.STRING
+})
+Organizations.sync();
+
+const Projects = sequelize.define('projects', {
+    name: Sequelize.STRING,
+    description: Sequelize.STRING,
+    due_date: Sequelize.DATE,
+    org_id:{
+        type: Sequelize.INTEGER,
+     
+        references: {
+          // This is a reference to another model
+          model: Organizations,
+     
+          // This is the column name of the referenced model
+          key: 'id',
+     
+          // This declares when to check the foreign key constraint. PostgreSQL only.
+          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    },
+    user_id: Sequelize.INTEGER
+})
+Projects.sync();
 
     module.exports = {
         sequelize,
-        GetAllUsers
+        Organizations,
+        Projects,
+        User
     }

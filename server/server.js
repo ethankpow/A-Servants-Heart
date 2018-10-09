@@ -1,12 +1,16 @@
-const Express = require ('express');
-const app = Express();
-// const bodyParser = require('body-parser');
-
+const express = require ('express');
+const app = express();
+const bodyParser = require('body-parser');
 //Import routes
-const projectRoutes = require('./routes/projectRoutes')
+const UserRouter = require('./routes/UserRoutes')
+const OrgRoutes = require('./routes/OrgRoutes')
+const ProjectRoutes = require('./routes/ProjectRoutes')
 
+app.use(express.json());
 //use routes
-app.use(projectRoutes)
+app.use(UserRouter)
+app.use(OrgRoutes)
+app.use(ProjectRoutes)
 
 require('./services/sequelize')
 
