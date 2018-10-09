@@ -5,7 +5,7 @@ projectRouter.get('/api/projects', (req, res) => {
     console.log('In get route')
     projectDataStore().then(projects => {
         res.JSON(projects)
-    })
+    });
 })
 
 module.exports = projectRouter
