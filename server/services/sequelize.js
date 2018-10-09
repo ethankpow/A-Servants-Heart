@@ -21,6 +21,7 @@ sequelize
     //   updatedAt: "updatedat"
     });
    User.sync();
+
  
 const Organizations = sequelize.define('organizations', {
     name: Sequelize.STRING,
