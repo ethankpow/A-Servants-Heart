@@ -1,0 +1,15 @@
+div.container {
+    width: 100%;
+}
+
+nav#my-nav-bar {
+    background-color: black;
+}
+
+.login-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}

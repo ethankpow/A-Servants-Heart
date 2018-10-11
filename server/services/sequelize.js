@@ -35,22 +35,23 @@ const Projects = sequelize.define('projects', {
     name: Sequelize.STRING,
     description: Sequelize.STRING,
     due_date: Sequelize.DATE,
-    org_id:{
-        type: Sequelize.INTEGER,
+    // org_id:{
+    //     type: Sequelize.INTEGER,
      
-        references: {
-          // This is a reference to another model
-          model: Organizations,
+    //     references: {
+    //       // This is a reference to another model
+    //       model: Organizations,
      
-          // This is the column name of the referenced model
-          key: 'id',
+    //       // This is the column name of the referenced model
+    //       key: 'id',
      
-          // This declares when to check the foreign key constraint. PostgreSQL only.
-          deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-        }
-    },
+    //       // This declares when to check the foreign key constraint. PostgreSQL only.
+    //       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+    //     }
+    // },
     user_id: Sequelize.INTEGER
 })
+Projects.belongsTo(Organizations)
 Projects.sync();
 
     module.exports = {

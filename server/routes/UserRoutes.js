@@ -11,4 +11,10 @@ UserRouter.post('/api/users', (req, res) => {
     return UsersData.CreateNewUser(newUser).then(user => res.json(user))
 })
 
+UserRouter.get('/api/test', (req, res) => {
+   console.log('TEST')
+   console.log(req.user)
+    return res.send('TEST')
+})
+
 module.exports = UserRouter
