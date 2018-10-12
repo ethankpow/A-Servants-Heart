@@ -1,38 +1,75 @@
 import React, { Component } from 'react';
-import { Button,Parallax, Card, Row, Col, Navbar, NavItem, Dropdown } from 'react-materialize';
+import { Button,Parallax, NavItem, Dropdown } from 'react-materialize';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import {fetchOrganizations, fetchProjects} from '../actions'
+import {navlink, NavLink} from 'react-router-dom'
+// import { Route , withRouter} from 'react-router-dom';
 
-// const containerr = styled.div`
-//  text-align: center;
-// `;
 
 
-class Header extends Component {
+
+
+class Main extends Component {
+    constructor(props){
+        super(props)
+    }
+    
+    
+    
+    componentWillMount(){
+        this.props.fetchOrganizations()
+    }
+
+    handleClick() {
+        this.props.history.push('/projects')
+    }
  
     render() {
-        return (
- 
-            <div>
+        if(this.props.orgs === 0){
+            return null
+        } else {
+
+            return (
+     
                 <div>
-                    <Parallax imageSrc="https://www.grammy.com/sites/com/files/styles/news_detail_header/public/gettyimages-840756000.jpg?itok=JLQPrR94"/>
-                            <div id="dropdown-container" className="container">
-                            <Dropdown trigger={
-                                    <Button>Search Organizations</Button>
-                                }>
-                                <NavItem>Town of Fuquay</NavItem>
-                                <NavItem>Town of Cary</NavItem>
-                                <NavItem divider />
-                                <NavItem>Town of Apex</NavItem>
-                                </Dropdown>
+                    <div>
+                        <div className="overlay">
+                             <div className="overlay-image">
+                                <Parallax  imageSrc="https://www.grammy.com/sites/com/files/styles/news_detail_header/public/gettyimages-840756000.jpg?itok=JLQPrR94"/>
                             </div>
-                            <div className="section white">
-                                <div className="row container">
+                                <div className="overlay-button center-align" >
+                                <Dropdown trigger={
+                                        <Button>Search Organizations</Button>
+                                    }>
+                                        { this.props.orgs.map(org => 
+                                            <NavItem onClick={()=> this.handleClick()}>{org.name}</NavItem>
+    
+                                        )}
+                                    </Dropdown>
                                 </div>
-                            </div>
-                        <Parallax imageSrc="http://lssin.org/wp-content/uploads/hurricane-1.jpg"/>
+                        </div>
+    
+                                <div className="section white">
+                                    <div className="row container">
+                                    </div>
+                                </div>
+                            <Parallax imageSrc="https://www.lawpracticetoday.org/wp-content/uploads/2014/09/Benefits-of-Community-Service-Cropped.jpg"/>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        
     }
   }
+  const mapStateToProps = ({orgs}) => {
+      console.log('in main comp', orgs)
+      return {orgs}
+  }
+  const mapDispatchToProps = (dispatch) => {
+      return bindActionCreators({fetchOrganizations, fetchProjects}, dispatch)
+  }
 
-  export default Header
+  export default connect(mapStateToProps, mapDispatchToProps)(Main)
+
+  

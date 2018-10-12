@@ -11,7 +11,8 @@ const CreateNewProject = async (project, id) => {
                             name: project.name,
                             description: project.description,
                             due_date: project.due_date,
-                            org_id: '1'
+                            org_id: '1',
+                            image_URL: project.image_URL
                         }).save()
     return newProject
 }

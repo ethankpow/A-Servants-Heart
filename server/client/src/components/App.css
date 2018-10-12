@@ -5,11 +5,45 @@ div.container {
 nav#my-nav-bar {
     background-color: black;
 }
+#my-footer {
+    background-color: black;
 
-.login-container {
+}
+/* .login-container {
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 50%;
+} */
+.brand {
+    font-family: 'Pacifico';
+
+}
+
+.project-container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%; 
+}
+.overlay {
+    position: relative;
+    width: 100%;
+}
+#dropdown-container {
+    max-width: 50%;
+}
+.overlay-image {
+    width: 100%;
+    height: auto;
+}
+.overlay-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }

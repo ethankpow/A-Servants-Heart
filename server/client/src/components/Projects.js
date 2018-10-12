@@ -1,57 +1,66 @@
 import React, { Component } from 'react';
-import { Button, Card, CardTitle, Row, Col, Navbar, NavItem, Dropdown, Input } from 'react-materialize';
-import { bindActionCreators } from 'redux';
+import { Card, CardTitle, Row, Col, Navbar, NavItem, Dropdown, Input } from 'react-materialize';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect} from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import {fetchProjects} from '../actions'
 
 class Projects extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+        console.log(this.props)
+    }
 
+    componentDidMount() {
+        this.props.fetchProjects()
     }
 
 
 
     render() {
-        
-        return(
-            <div>
-            <div className='container'>
-                <Row >
-                    <Col s={6} m={3}>
-                        <Card header={<CardTitle reveal image={"https://images.pexels.com/photos/128303/pexels-photo-128303.jpeg?auto=compress&cs=tinysrgb&h=350"} waves='light'/>}
-                            title="Card Title"
-                            reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-                            <p><a href="#">This is a link</a></p>
-                        </Card>
-                    </Col>
-                </Row>
-                <Row >
-                    <Col s={6} m={3}>
-                        <Card header={<CardTitle reveal image={"https://images.pexels.com/photos/128303/pexels-photo-128303.jpeg?auto=compress&cs=tinysrgb&h=350"} waves='light'/>}
-                            title="Card Title"
-                            reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-                            <p><a href="#">This is a link</a></p>
-                        </Card>
-                    </Col>
-                </Row>
+        // if (!this.props.projects) {
+        //     // <Redirect to="/"/>
+        //     return (
+        //         <div>loading...</div>
+        //     )
+        //   } else {
+
+            return (
+                <div>
+                <div className='container'>
+                    <Row >
+                        {
+                            this.props.projects.map(project => {
+                                console.log(project.due_date)
+                                return (
+                                    <Col s={12} m={3} >
+                                        <Card header={<CardTitle reveal image={project.image_URL} waves='light'/>}
+                                            title={project.name}
+                                            reveal={<p>{project.description}</p>}>
+                                            <p><a href="#">This is a link</a><b right>Due date: {project.due_date}</b></p>
+                                            
+                                        </Card>
+                                    </Col>
+                                )
+                            })
+                        }
+                    </Row>
+                </div>
+                
             </div>
-            <div className='container'>
-                 <Row >
-                    <Col s={6} m={3}>
-                        <Card header={<CardTitle reveal image={"https://images.pexels.com/photos/128303/pexels-photo-128303.jpeg?auto=compress&cs=tinysrgb&h=350"} waves='light'/>}
-                            title="Card Title"
-                            reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-                            <p><a href="#">This is a link</a></p>
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
-            </div>
-        )
+        );
+    // }
     }
 }
+
 const mapStateToProps = ({projects}) =>{
+    console.log('in projects compon', projects)
     return {projects}
 }
-export default connect(mapStateToProps, null)(Projects)
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({fetchProjects}, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)
 
