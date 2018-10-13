@@ -1,4 +1,4 @@
-import { FETCH_PROJECTS, CREATE_PROJECT } from '../actions/types';
+import { FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGPROJECT } from '../actions/types';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -8,6 +8,8 @@ export default function(state = [], action) {
     case CREATE_PROJECT:
       console.log('Creating', action.payload)
       return state;
+    case FETCH_ORGPROJECT:
+      return action.payload || false;
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button,Parallax, NavItem, Dropdown } from 'react-materialize';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {fetchOrganizations, fetchProjects} from '../actions'
+import {fetchOrganizations, fetchProjects, fetchProjectsByOrgId} from '../actions'
 import {navlink, NavLink} from 'react-router-dom'
 // import { Route , withRouter} from 'react-router-dom';
 
@@ -21,8 +21,10 @@ class Main extends Component {
         this.props.fetchOrganizations()
     }
 
-    handleClick() {
-        this.props.history.push('/projects')
+    handleClick(id) {
+        console.log(id)
+        this.props.fetchProjectsByOrgId(id)
+        this.props.history.push('/projects/:orgid')
     }
  
     render() {
@@ -43,7 +45,7 @@ class Main extends Component {
                                         <Button>Search Organizations</Button>
                                     }>
                                         { this.props.orgs.map(org => 
-                                            <NavItem onClick={()=> this.handleClick()}>{org.name}</NavItem>
+                                            <NavItem onClick={()=> this.handleClick(org.id)}>{org.name}</NavItem>
     
                                         )}
                                     </Dropdown>
@@ -67,7 +69,7 @@ class Main extends Component {
       return {orgs}
   }
   const mapDispatchToProps = (dispatch) => {
-      return bindActionCreators({fetchOrganizations, fetchProjects}, dispatch)
+      return bindActionCreators({fetchOrganizations, fetchProjects, fetchProjectsByOrgId}, dispatch)
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(Main)
