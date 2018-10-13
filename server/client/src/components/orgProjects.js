@@ -10,7 +10,10 @@ class OrgProject extends Component {
         super(props)
         
     }
-    
+    // componentDidMount(){
+    //     this.props.fetchProjectsByOrgId(id)
+
+    // }
     
     
     render (){

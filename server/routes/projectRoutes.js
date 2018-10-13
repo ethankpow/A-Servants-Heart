@@ -9,7 +9,7 @@ ProjectRouter.post('/api/projects', (req, res)=>{
     return ProjectData.CreateNewProject(newProject,req.user_id).then(res.json("Project created successfully"))
 })
 ProjectRouter.get('/api/projects/:orgid', (req, res)=>{
-    let orgUID = req.body
+    let orgUID = req.params.orgid
     return ProjectData.GetProjectsByOrgId(orgUID).then(project => res.json(project))
 })
 module.exports = ProjectRouter

@@ -65,7 +65,6 @@ class Main extends Component {
     }
   }
   const mapStateToProps = ({orgs}) => {
-      console.log('in main comp', orgs)
       return {orgs}
   }
   const mapDispatchToProps = (dispatch) => {

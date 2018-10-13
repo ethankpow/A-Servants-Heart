@@ -17,7 +17,7 @@ const CreateNewProject = async (project, id) => {
     return newProject
 }
 const GetProjectsByOrgId = async (id) => {
-    let orgProject = await Projects.findById(id)
+    let orgProject = await Projects.findAll({where: {organizationId: id}})
     return orgProject
 }
 
