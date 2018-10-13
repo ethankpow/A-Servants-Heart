@@ -23,7 +23,7 @@ export const fetchOrgById = async () => {
   const res = await axios({ url:'/api/'})
 }
 export const fetchProjectsByOrgId = async (id) => {
-  const res = await axios({url:'/api/projects/', method: 'get', params: id})
+  const res = await axios({url:`/api/projects/${id}`, method: 'get'})
   console.log(res)
   return { type: FETCH_ORGPROJECT, payload: res.data}
 }
