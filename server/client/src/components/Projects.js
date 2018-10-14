@@ -34,6 +34,7 @@ class Projects extends Component {
                             this.props.projects.map(project => {
                                 console.log(project.due_date)
                                 return (
+                                   <div classname="container">
                                     <Col s={12} m={3} >
                                         <Card header={<CardTitle reveal image={project.image_URL} waves='light'/>}
                                             title={project.name}
@@ -43,6 +44,7 @@ class Projects extends Component {
                                             
                                         </Card>
                                     </Col>
+                                  </div>
                                 )
                             })
                         }

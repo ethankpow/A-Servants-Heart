@@ -4,6 +4,7 @@ div.container {
 
 nav#my-nav-bar {
     background-color: black;
+    padding-left: 30px;
 }
 #my-footer {
     background-color: black;
