@@ -8,7 +8,7 @@ UserRouter.get('/api/users', (req, res) => {
 
 UserRouter.post('/api/users', (req, res) => {
     let newUser = req.body
-    return UsersData.CreateNewUser(newUser).then(user => res.json(user))
+    return UsersData.CreateNewUser(newUser).then(user => res.json("Account created Successfully")).catch()
 })
 
 UserRouter.get('/api/test', (req, res) => {

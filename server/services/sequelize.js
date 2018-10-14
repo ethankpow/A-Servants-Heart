@@ -29,6 +29,7 @@ const Organizations = sequelize.define('organizations', {
     email: Sequelize.STRING,
     phone_number: Sequelize.STRING
 })
+Organizations.belongsTo(User)
 Organizations.sync();
 
 const Projects = sequelize.define('projects', {

@@ -23,11 +23,14 @@ class Header extends Component {
     }
     render(){
         return(
-            <Navbar id="my-nav-bar" brand={<span className="brand">A Servants Heart</span>} right>
-            <NavItem onClick={() => this.navigateToProjects()} href='/projects'><Icon left>search</Icon>Find A Project</NavItem>
-            <NavItem href='/newProject'><Icon left>add_circle_outline</Icon>Post a Project</NavItem>
-            <NavItem href='/login'><Icon left>account_circle</Icon>Login</NavItem>
-            </Navbar>
+            <div className="container">
+                    <Navbar id="my-nav-bar" brand={<span className="brand">A Servants Heart</span>} right>
+                            <NavItem onClick={() => this.navigateToProjects()} href='/projects'><Icon left>search</Icon>Find A Project</NavItem>
+                            <NavItem href='/newProject'><Icon left>add_circle_outline</Icon>Post a Project</NavItem>
+                            <NavItem href='/login'><Icon left>account_circle</Icon>Login</NavItem>
+                    </Navbar>
+            
+            </div>
         )
         }
 }

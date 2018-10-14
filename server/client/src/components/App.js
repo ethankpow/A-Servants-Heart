@@ -8,6 +8,7 @@ import Header from './Header'
 import Projects from './Projects'
 import NewProject from './newProject'
 import OrgProject from './orgProjects'
+import CreateAccount from './createAccount'
 import FooterComp from './footer'
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
                       <Route exact path="/login" component={Login} />
                       <Route exact path="/projects" component={Projects} />
                       <Route exact path='/projects/:orgid' component={OrgProject} />
+                      <Route exact path='/register' component={CreateAccount}/>
                       <Route exact path="/newProject" component={NewProject} />
                       <FooterComp/>
                   </div>

@@ -38,7 +38,8 @@ class Projects extends Component {
                                         <Card header={<CardTitle reveal image={project.image_URL} waves='light'/>}
                                             title={project.name}
                                             reveal={<p>{project.description}</p>}>
-                                            <p><a href="#">This is a link</a><b right>Due date: {project.due_date}</b></p>
+                                            <p><b right>Due date: {project.due_date}</b></p>
+                                            <p><a href="#">Choose this Project</a></p>
                                             
                                         </Card>
                                     </Col>

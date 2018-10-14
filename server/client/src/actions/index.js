@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {LOGIN_USER, FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGANIZATIONS, FETCH_ORGPROJECT } from './types'
+import {LOGIN_USER, FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGANIZATIONS, FETCH_ORGPROJECT, CREATE_USER} from './types'
 
 export const loginUser = async (loginObject) => {
     const res = await axios({url: '/api/login', method: 'post', data: loginObject});
@@ -26,4 +26,8 @@ export const fetchProjectsByOrgId = async (id) => {
   const res = await axios({url:`/api/projects/${id}`, method: 'get'})
   console.log(res)
   return { type: FETCH_ORGPROJECT, payload: res.data}
+}
+export const createUser = async (newUser) => {
+  const res = await axios({url:'/api/users', method: 'post', data: newUser})
+  return { type: CREATE_USER, payload: res.data}
 }
