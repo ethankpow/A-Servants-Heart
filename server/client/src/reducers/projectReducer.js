@@ -1,4 +1,4 @@
-import { FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGPROJECT } from '../actions/types';
+import { FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGPROJECT, FETCH_USERPROJECTS } from '../actions/types';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -9,7 +9,9 @@ export default function(state = [], action) {
     case FETCH_ORGPROJECT:
       console.log('org project reducer', action.payload)
       return action.payload || false;
-    default:
+    case FETCH_USERPROJECTS:
+        return action.payload || false;
+      default:
       return state;
+    }
   }
-}

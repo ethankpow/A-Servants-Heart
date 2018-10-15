@@ -21,7 +21,10 @@ class Login extends Component {
     }
     render() {
         return (
+          <div className="full-container">
+
             <div className="container">
+                    <Col className='center-align'><h3>Welcome Back</h3></Col>
                 <Row>
                     <Col s={12} m={4} offset={"m4"}>
                         <Input s={12} m={12}onChange={(e) => this.setState({username: e.target.value})} type="email" label="Username" s={20} />
@@ -32,6 +35,7 @@ class Login extends Component {
                    </Col>           
                 </Row>
             </div>
+          </div>
         );
     }
   }

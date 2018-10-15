@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react';
 import { Card, CardTitle, Row, Col, Navbar, NavItem, Dropdown, Input } from 'react-materialize';
 // import { bindActionCreators } from 'redux';
@@ -16,6 +17,10 @@ class Projects extends Component {
         this.props.fetchProjects()
     }
 
+    async selectProject(id) {
+        await axios({url: `/api/chooseproject/${id}`, method: 'get'})
+        window.location.reload()
+    }
 
 
     render() {
@@ -32,20 +37,22 @@ class Projects extends Component {
                     <Row >
                         {
                             this.props.projects.map(project => {
-                                console.log(project.due_date)
-                                return (
-                                   <div classname="container">
-                                    <Col s={12} m={3} >
-                                        <Card header={<CardTitle reveal image={project.image_URL} waves='light'/>}
-                                            title={project.name}
-                                            reveal={<p>{project.description}</p>}>
-                                            <p><b right>Due date: {project.due_date}</b></p>
-                                            <p><a href="#">Choose this Project</a></p>
-                                            
-                                        </Card>
-                                    </Col>
-                                  </div>
-                                )
+                                if(!project.userId){
+
+                                    return (
+                                       <div classname="container">
+                                        <Col s={12} m={3} >
+                                            <Card header={<CardTitle reveal image={project.image_URL} waves='light'/>}
+                                                title={project.name}
+                                                reveal={<p>{project.description}</p>}>
+                                                <p><b right>Due date: {project.due_date}</b></p>
+                                                <p><a onClick={()=> this.selectProject(project.id)} href='#'>Choose this Project</a></p>
+                                                
+                                            </Card>
+                                        </Col>
+                                      </div>
+                                    )
+                                }
                             })
                         }
                     </Row>

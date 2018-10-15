@@ -26,6 +26,7 @@ class Main extends Component {
         this.props.fetchProjectsByOrgId(id)
         this.props.history.push('/projects/:orgid')
     }
+    
  
     render() {
         if(this.props.orgs === 0){
@@ -59,7 +60,7 @@ class Main extends Component {
                                             title="Reorganize Library Bookshelves"
                                             reveal={<p>After recent restoration the town would like to invite volunteers to help revamp our library</p>}>
                                             <p><b right>Due date: 10/22/2018 </b></p>
-                                            <p><a href="#">Choose this Project</a></p>
+                                            <p><a onClick={()=> this.selectProject()}>Choose this Project</a></p>
                                             
                                         </Card>
                                     </Col>

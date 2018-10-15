@@ -11,37 +11,39 @@ sequelize
     })
     
     
+    
+    
+    const Organizations = sequelize.define('organizations', {
+        name: Sequelize.STRING,
+        password: Sequelize.STRING,
+        email: Sequelize.STRING,
+        phone_number: Sequelize.STRING
+    })
+    // Organizations.sync();
+    
+    const Projects = sequelize.define('projects', {
+        name: Sequelize.STRING,
+        description: Sequelize.STRING,
+        due_date: Sequelize.STRING,
+        image_URL: Sequelize.STRING,
+        completed: Sequelize.BOOLEAN
+    })
+    // Projects.sync();
+    
     const User = sequelize.define('users', {
-      name: Sequelize.STRING,
-      email: Sequelize.STRING,
-      phone_number: Sequelize.INTEGER,
-      username: Sequelize.STRING,
-      password: Sequelize.STRING,
-    //   createdAt: "createdat",
-    //   updatedAt: "updatedat"
+        name: Sequelize.STRING,
+        email: Sequelize.STRING,
+        phone_number: Sequelize.INTEGER,
+        username: Sequelize.STRING,
+        password: Sequelize.STRING,
+        //   createdAt: "createdat",
+        //   updatedAt: "updatedat"
     });
-   User.sync();
-
- 
-const Organizations = sequelize.define('organizations', {
-    name: Sequelize.STRING,
-    password: Sequelize.STRING,
-    email: Sequelize.STRING,
-    phone_number: Sequelize.STRING
-})
-Organizations.belongsTo(User)
-Organizations.sync();
-
-const Projects = sequelize.define('projects', {
-    name: Sequelize.STRING,
-    description: Sequelize.STRING,
-    due_date: Sequelize.STRING,
-    user_id: Sequelize.INTEGER,
-    image_URL: Sequelize.STRING
-})
-Projects.belongsTo(Organizations)
-Projects.sync();
-
+    // User.sync();
+    Projects.belongsTo(User)
+    Organizations.belongsTo(User)
+    User.hasMany(Projects)
+    sequelize.sync(User, Projects, Organizations)
     module.exports = {
         sequelize,
         Organizations,

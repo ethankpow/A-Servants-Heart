@@ -9,10 +9,7 @@ nav#my-nav-bar {
 #my-footer {
     background-color: black;
     margin: auto;
-    /* position: absolute;
-    bottom: 0;
     width: 100%;
-    display: flex;*/
     padding-right: 20px;
     padding-left: 15px; 
 }
@@ -53,4 +50,32 @@ nav#my-nav-bar {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.all-projects {
+    display: flex;
+    flex-direction: row;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px;
+}
+
+.project-image {
+    width: 40%;
+}
+
+.image-sizes {
+    width: 100%;
+}
+
+.full-container {
+    height: 100vh;
+}
+img.activator {
+    height: 300px;
+    width: 300px;
 }

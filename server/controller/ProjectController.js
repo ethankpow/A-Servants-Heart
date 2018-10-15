@@ -12,7 +12,8 @@ const CreateNewProject = async (project, id) => {
                             description: project.description,
                             due_date: project.due_date,
                             org_id: '1',
-                            image_URL: project.image_URL
+                            image_URL: project.image_URL,
+                            completed: false
                         }).save()
     return newProject
 }
@@ -21,10 +22,23 @@ const GetProjectsByOrgId = async (id) => {
     return orgProject
 }
 
+const GetProjectById = async (id) => {
+    let project = await Projects.findById(id)
+    return project
+}
+
+const GetProjectByUserId = async (id) =>{
+    let projects = await Projects.findAll({where: {userId: id}})
+    return projects
+}
+
+
 
 
 module.exports = {
     GetAllProjects,
     CreateNewProject,
-    GetProjectsByOrgId
+    GetProjectsByOrgId,
+    GetProjectById,
+    GetProjectByUserId
 }
