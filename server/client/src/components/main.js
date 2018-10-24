@@ -3,7 +3,6 @@ import { Button,Parallax, NavItem, Dropdown, Col, Card, Icon, CardTitle} from 'r
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {fetchOrganizations, fetchProjects, fetchProjectsByOrgId} from '../actions'
-import {navlink, NavLink} from 'react-router-dom'
 // import { Route , withRouter} from 'react-router-dom';
 
 
@@ -24,7 +23,7 @@ class Main extends Component {
     handleClick(id) {
         console.log(id)
         this.props.fetchProjectsByOrgId(id)
-        this.props.history.push('/projects/:orgid')
+        this.props.history.push(`/projects/${id}`)
     }
     
  
@@ -43,7 +42,7 @@ class Main extends Component {
                             </div>
                                 <div className="overlay-button center-align" >
                                 <Dropdown trigger={
-                                        <Button>Search Organizations</Button>
+                                        <Button>Search by Organization</Button>
                                     }>
                                         { this.props.orgs.map(org => 
                                             <NavItem onClick={()=> this.handleClick(org.id)}>{org.name}</NavItem>
@@ -60,13 +59,16 @@ class Main extends Component {
                                             title="Reorganize Library Bookshelves"
                                             reveal={<p>After recent restoration the town would like to invite volunteers to help revamp our library</p>}>
                                             <p><b right>Due date: 10/22/2018 </b></p>
-                                            <p><a onClick={()=> this.selectProject()}>Choose this Project</a></p>
+                                            <p><a href="/projects">Choose this Project</a></p>
                                             
                                         </Card>
                                     </Col>
                                     <Col m={4} s={12}>
-                                        <Card className='blue-grey darken-1' textClassName='white-text' title='About Us' actions={[<a href='#'>Learn More</a>]}>
+                                        <Card className='blue-grey darken-1' textClassName='white-text' title='Our Mission'>
                                         ASH seeks to drive community engagement through service. We are here to fill the void between those who wish serve locally and organizations that could use volunteer help.
+                                        </Card>
+                                        <Card className='blue-grey darken-1' textClassName='white-text' title='How to get started' actions={[<a href='/register'>Sign up</a>]}>
+                                        Sign up today to begin serving your community and making an impact.
                                         </Card>
                                     </Col>
                                     <Col s={12} m={4} >
@@ -74,7 +76,7 @@ class Main extends Component {
                                             title="Downtown Park Cleanup"
                                             reveal={<p>We need willing individuals to help clean up Downtown Park</p>}>
                                             <p><b right>Due date: 10/30/2018</b></p>
-                                            <p><a href="#">Choose this Project</a></p>
+                                            <p><a href="/projects">Choose this Project</a></p>
                                             
                                         </Card>
                                     </Col>

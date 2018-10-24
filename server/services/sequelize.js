@@ -33,7 +33,7 @@ sequelize
     const User = sequelize.define('users', {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
-        phone_number: Sequelize.INTEGER,
+        phone_number: Sequelize.STRING,
         username: Sequelize.STRING,
         password: Sequelize.STRING,
         //   createdAt: "createdat",

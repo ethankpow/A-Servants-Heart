@@ -28,8 +28,8 @@ class Header extends Component {
                     <Navbar id="my-nav-bar" brand={<span className="brand">A Servants Heart</span>} offset={2} right>
                             <NavItem onClick={() => this.navigateToProjects()} href='/projects'><Icon left>search</Icon>Find A Project</NavItem>
                             <NavItem href='/newProject'><Icon left>add_circle_outline</Icon>Post a Project</NavItem>
-                            <NavItem href='./profile'>{this.props.login.name}</NavItem>
-                            <NavItem  href='/api/logout'>Logout</NavItem>
+                            <NavItem href='/profile'>{this.props.login.name}</NavItem>
+                            <NavItem href='/api/logout'>Logout</NavItem>
                     </Navbar>
             
             </div>

@@ -22,6 +22,7 @@ class CreateAccount extends Component {
     handleSubmit () {
         console.log(this.state)
         this.props.createUser(this.state)
+        this.props.history.push('/')
     }
 
     render(){

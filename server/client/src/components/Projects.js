@@ -37,7 +37,7 @@ class Projects extends Component {
                     <Row >
                         {
                             this.props.projects.map(project => {
-                                if(!project.userId){
+                                if(!project.userId || null){
 
                                     return (
                                        <div classname="container">

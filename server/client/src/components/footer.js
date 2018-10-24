@@ -12,22 +12,15 @@ class FooterComp extends Component {
             <div className="container">
             <Row>
 
-                <Footer s={12} id="my-footer" copyrights="copy 2018 Copyright Text"
+                <Footer s={12} id="my-footer" copyrights="A Servants Heart 2018 Copyright"
                     moreLinks={
-                        <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+                        <a className="grey-text text-lighten-4 right" href="#!"></a>
                     }
-                    links={
-                        <ul>
-                        <li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    }
+                    
                     className='example'
                     >
                         <h5 className="white-text">A Servants Heart</h5>
-                        <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                        <p className="grey-text text-lighten-4">Learn more about how you can serve your community by signing up</p>
                 </Footer>
             </Row>
             

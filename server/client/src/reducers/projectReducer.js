@@ -1,5 +1,5 @@
 import { FETCH_PROJECTS, CREATE_PROJECT, FETCH_ORGPROJECT, FETCH_USERPROJECTS } from '../actions/types';
-
+//Need to seperate actions into seperate reducers
 export default function(state = [], action) {
   switch (action.type) {
     case FETCH_PROJECTS:
